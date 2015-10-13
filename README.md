@@ -34,18 +34,18 @@ client.createContainer('tutum/hello-world')
 
 ## Reference
 
-### TinyShipyardClient(shipyardUrl, serviceKey) [constructor]
+__TinyShipyardClient(shipyardUrl, serviceKey) [constructor]__
 
 * __shipyardUrl__ (string): The Shipyard URL, including protocol and port
 * __serviceKey__ (number): The Shipyard service key for authentication
 
-### TinyShipyardClient.prototype.createContainer(imageName)
+__TinyShipyardClient.prototype.createContainer(imageName)__
 
 * __imageName__ (string): The name of the image you want to start a container from
-* __<returns>__: A promise with the ID of the newly started container
+* __(returns)__: A promise with the ID of the newly started container
 
-### TinyShipyardClient.prototype.scaleContainer(containerId, instanceCount)
+__TinyShipyardClient.prototype.scaleContainer(containerId, instanceCount)__
 
 * __containerId__ (string): The ID of the container you want to scale out
 * __instanceCount__ (number): The number of additional instances you want to start
-* __<returns>__: A promise with an array containing the IDs of the newly started containers
+* __(returns)__: A promise with an array containing the IDs of the newly started containers

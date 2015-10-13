@@ -1,12 +1,12 @@
 {
   "name": "tiny-shipyard-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tiny client library for the Shipyard v3 API",
   "author": "Andreas Helmberger <public@ahelmberger.de>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahelmberger/tiny-shipyard-client.git"
+    "url": "https://github.com/ahelmberger/tiny-shipyard-client.git"
   },
   "keywords": [
     "shipyard",
