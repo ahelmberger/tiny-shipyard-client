@@ -1,4 +1,5 @@
 var fetch = require('node-fetch');
+var extend = require('xtend');
 
 function createHeaders(serviceKey) {
   return {
@@ -21,8 +22,8 @@ var TinyShipyardClient = function (shipyardUrl, serviceKey) {
   this.serviceKey = serviceKey;
 };
 
-TinyShipyardClient.prototype.createContainer = function (image) {
-  var body = JSON.stringify({
+TinyShipyardClient.prototype.createContainer = function (image, config) {
+  var body = JSON.stringify(extend({
     'HostConfig': {
       'RestartPolicy': {
         'Name': 'always'
@@ -42,7 +43,7 @@ TinyShipyardClient.prototype.createContainer = function (image) {
     'Image': image,
     'CpuShares': null,
     'Memory': null
-  });
+  }, config));
 
   var promise = fetch(this.shipyardUrl + '/containers/create?name=', {
     method: 'POST',
@@ -80,5 +81,22 @@ TinyShipyardClient.prototype.scaleContainer = function (containerId, count) {
     return json.Scaled;
   });
 }
+
+TinyShipyardClient.prototype.getContainers = function () {
+  return fetch(this.shipyardUrl + '/containers/json', {
+    method: 'GET',
+    headers: createHeaders(this.serviceKey)
+  })
+  .then(handleResponse);
+}
+
+TinyShipyardClient.prototype.destroyContainer = function (id) {
+  return fetch(this.shipyardUrl + '/containers/' + id + '?force=true', {
+    method: 'DELETE',
+    headers: createHeaders(this.serviceKey)
+  })
+  .then(handleResponse);
+}
+
 
 module.exports = TinyShipyardClient;
