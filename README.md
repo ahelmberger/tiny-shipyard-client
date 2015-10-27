@@ -2,6 +2,8 @@
 
 A tiny client library for the [Shipyard](http://shipyard-project.com/) v3 API
 
+[![npm](https://img.shields.io/npm/v/tiny-shipyard-client.svg?style=flat-square)](https://www.npmjs.com/package/tiny-shipyard-client) [![npm](https://img.shields.io/david/ahelmberger/tiny-shipyard-client.svg?style=flat-square)](https://www.npmjs.com/package/tiny-shipyard-client) [![npm downloads](https://img.shields.io/npm/dt/tiny-shipyard-client.svg?style=flat-square)](https://www.npmjs.com/package/tiny-shipyard-client)
+
 ## Installation
 
 ~~~ sh
