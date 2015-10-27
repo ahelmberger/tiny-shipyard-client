@@ -22,7 +22,7 @@ var TinyShipyardClient = function (shipyardUrl, serviceKey) {
   this.serviceKey = serviceKey;
 };
 
-TinyShipyardClient.prototype.createContainer = function (image, config) {
+TinyShipyardClient.prototype.createContainer = function (image, options) {
   var body = JSON.stringify(extend({
     'HostConfig': {
       'RestartPolicy': {
@@ -43,7 +43,7 @@ TinyShipyardClient.prototype.createContainer = function (image, config) {
     'Image': image,
     'CpuShares': null,
     'Memory': null
-  }, config));
+  }, options));
 
   var promise = fetch(this.shipyardUrl + '/containers/create?name=', {
     method: 'POST',
@@ -90,8 +90,8 @@ TinyShipyardClient.prototype.getContainers = function () {
   .then(handleResponse);
 }
 
-TinyShipyardClient.prototype.destroyContainer = function (id) {
-  return fetch(this.shipyardUrl + '/containers/' + id + '?force=true', {
+TinyShipyardClient.prototype.destroyContainer = function (containerId) {
+  return fetch(this.shipyardUrl + '/containers/' + containerId + '?force=true', {
     method: 'DELETE',
     headers: createHeaders(this.serviceKey)
   })
